@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    
+
     public enum GameState
     {
         Iniciando,
@@ -13,72 +13,66 @@ public class GameManager : MonoBehaviour
         Gameplay
     }
 
-    public GameState CurrentState { get; private set; }
-
-    [Header("Input")]
-    public PlayerInput playerInput;
+    public GameState currentState;
 
     private void Awake()
     {
         // Singleton
-        if (Instance != null && Instance != this)
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            // Escuta quando a cena muda
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else
         {
             Destroy(gameObject);
-            return;
         }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        {
-            for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
-            {
-                Debug.Log(SceneUtility.GetScenePathByBuildIndex(i));
-            }
-        }
-        ChangeState(GameState.Iniciando);
-        LoadScene("Splash");
+        SetState(GameState.Iniciando);
+        LoadScene("splash");
     }
 
-    // =========================
-    // STATE
-    // =========================
-    public void ChangeState(GameState newState)
+    // Chamado automaticamente quando uma cena carrega
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        CurrentState = newState;
-        Debug.Log("Estado atual: " + CurrentState);
+        Debug.Log("Cena carregada: " + scene.name);
+
+        if (scene.name == "splash")
+        {
+            SetState(GameState.Iniciando);
+        }
+        else if (scene.name == "Menu")
+        {
+            SetState(GameState.MenuPrincipal);
+        }
+        else if (scene.name == "GetStarted_Scene")
+        {
+            SetState(GameState.Gameplay);
+        }
     }
 
-    // =========================
-    // SCENE CONTROL
-    // =========================
+    public void SetState(GameState newState)
+    {
+        currentState = newState;
+        Debug.Log("Estado atual: " + currentState);
+    }
+
+    // Controle de cenas (SÓ o GameManager pode fazer isso)
     public void LoadScene(string sceneName)
     {
-        Debug.Log("Tentando carregar cena: [" + sceneName + "]");
-
-        switch (CurrentState)
-        {
-            case GameState.Iniciando:
-            case GameState.MenuPrincipal:
-            case GameState.Gameplay:
-                SceneManager.LoadScene(sceneName);
-                break;
-
-            default:
-                Debug.LogWarning("Transição de cena não permitida!");
-                break;
-        }
+        SceneManager.LoadScene(sceneName);
     }
 
-    // =========================
-    // INPUT
-    // =========================
-    public void AssignPlayerInput(PlayerInput input)
+    // Input allocation (simples)
+    public void SetupPlayerInput(PlayerInput playerInput)
     {
-        playerInput = input;
-        Debug.Log("Input atribuído ao jogador.");
+        Debug.Log("Input atribuído ao jogador: " + playerInput.name);
     }
+    
 }
