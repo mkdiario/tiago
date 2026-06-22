@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
         else if (scene.name == "GetStarted_Scene")
         {
             SetState(GameState.Gameplay);
+
+            SceneManager.LoadScene("GUI", LoadSceneMode.Additive);
         }
     }
 
