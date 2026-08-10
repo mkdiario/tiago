@@ -1,0 +1,85 @@
+{
+    "version": 1,
+    "name": "Gameinput",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "1f080eba-4369-46e0-a73e-0fb6c9b6b5a6",
+            "actions": [
+                {
+                    "name": "jump",
+                    "type": "Button",
+                    "id": "c8748baa-3151-4104-8d34-01ffa5cb19cb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ade1d934-cd43-4bb1-990a-f5a803f5dbda",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";tecladoemousesingle",
+                    "action": "jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0bea823-ed71-4fe4-aa8f-8af004f4710c",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";controle",
+                    "action": "jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "6f10c107-430a-4c0c-95c2-05aa40e43371",
+            "actions": [],
+            "bindings": []
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "controle",
+            "bindingGroup": "controle",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "tecladoemousesingle",
+            "bindingGroup": "tecladoemousesingle",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
