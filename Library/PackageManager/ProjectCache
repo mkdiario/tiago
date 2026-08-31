@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639219850007515647
-    m_Hash: 2114169603
+      ticks: 639237965094305316
+    m_Hash: 1458238340
   m_LockFileStatus:
     m_FilePath: C:/Users/20241170150052/Documents/GitHub/tiago/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639219850020271199
-    m_Hash: 973628432
+      ticks: 639237965094305316
+    m_Hash: 1480791431
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
